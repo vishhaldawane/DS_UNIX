@@ -1,0 +1,717 @@
+
+
+	Unix/Linux Fundamentals with Shell Scripting
+				- with Vishhal
+
+
+
+		Unix 
+		|
+		UNICS
+		|
+		UNiplexed Information ComputingSystem
+		|
+		single machine
+		| abundance of h/w - 32 CPU 64 gb ram
+		| abundance of s/w - so many software, EA
+		|			websites, apps
+		| abundance of users - millions of users
+		|
+	SCO-UNix - Ken Thompson - santacruz operations project in US
+	|RAM, CPU, HDD
+	| Kerne l
+------------------------------------
+|	|	|	|	|
+nic	nic	nic	nic	nic<- network card
+term	term	term	term	term
+mon/key	m/k	m/k		
+|	nic = network interface card | terminal
+shell
+|
+ls = list files
+
+rpc = remote procedure call
+rmi = remote method invocation
+
+ls
+
+
+SPARC = scalable process architecture
+AIX = advanced information CS(x)
+
+ASCII = american standard code for information interchange
+
+
+vendor		Bajaj		Yamaha		Sujuki		Hero
+engine		DTS-i		Rx100/..	..		..
+brand		Pulsar		FZ		Gixxer		Splendor
+		<-----------------bike-------------------------------->
+
+
+bb= black boxes = mainframe = like a super computer
+						Unix / GNU-Linux
+				<-------------------unix---------------->
+		1		2			3	4	5		6
+vendor		Intel		Sun Microsystems	HP	IBM	Apple		Linux 		Linus Torvalds
+		|		| (Oracle)		|	|	|		|
+h/w |cpu	x86		SPARC			hp ser  bb	powerpc		any
+OS		MS-Windows	Solaris			HpUX	AIX	Macintosh	RedHat	Mandrake Caldera Suse
+		|		|							|	
+		ASCII		ASCII						free		paid
+		|		|						Fedora1,2,3	RHEL (redhat entreprise linux)	
+compiler	ls.c	-----> ls.a						Ubuntu
+turboc		|		|
+		|		|
+linker		ls.obj		ls.o
+		|		|
+output file	ls.exe ------> ls.out
+				|
+				rename it
+				|
+				ls
+
+		dir		ls
+	
+		Network based OS	vs	Windows XP/2010	
+
+OS
+-----------------------------------------
+	EA1	EA2	EA3	 EA4
+	banking	mesg	printing reservation
+--------|-----------------------------------
+	|
+	10000
+
+
+
+
+Features of enterprise application
+-------------------------------------
+			Java dotnet cpp
+
+1. remote capability
+	socket programming
+
+2. highly available
+	24 x 7 = cluster
+
+3. multhithreaded
+	Threading code
+
+4. pooling
+	common users
+	to avail common features
+	
+5. caching
+	unique users with unique dashboard
+
+6. transaction
+		transferFund(), sendMessage()
+	Atomicity Consistency Isolation Durable
+
+7. security
+	https = transport layer security
+		OTP
+		Grid of ur Debit card
+		transaction password
+ 
+
+
+
+
+			Server Machine
+			| recieve this request and process it
+			| and generate the response 
+			|
+			server socket [ ip/port ]
+			|Network Card
+			|
+	--------------------
+	|Network Card - NIC 
+	|
+	client socket [ ip/port ]
+	|
+	Client Machine
+	|
+	ls ( request )
+
+
+
+Day 1
+----------
+ 1. Introduction to the OS
+ 2. Getting around the system
+ 3. Unix file system structure
+ 4. File commands
+ 5. Directory commands
+ 6. soft link vs hard link
+ 7. File Permissions
+ 8. Vi editor
+----------
+
+
+cal
+cal 2020
+cal 7 2020
+cal -j [ julian ]
+ncal -M [ monday as first day ]
+ncal -S [ sunday as first day ]
+cal 9 1752
+cal -3
+cal -y [ current year calendar ]
+ls 
+ls -l [long list]
+time
+
+
+
+
+who - shows all the users logged in
+who am i -- shows ur details from who list
+whoami --- details not shown
+
+logout
+
+Unix file system structure
+
+	- the international standard strcture for any unix os
+
+
+			MyComputer | MyPC | This PC
+				|
+		------------------------------------------------------------------------
+		|	|	|	|	|		|
+		C:	D:	E:	NN	Downloads	Desktop	Documents
+
+
+
+14 directories
+
+top				/ <-- known as the root directory
+				|
+		-------------------------------------
+		|	|	|	|
+1		bin	usr	sbin	etc
+		10	|	50
+			----------
+			|	|
+2			bin	sbin
+			100	500
+
+1. /bin		- binaries - executables [.exe files ]
+2. /usr/bin
+		1 2   3
+		/usr/bin
+		|   |
+	      root separator
+		
+3. /sbin	- single user binaries [ for the root user - administrator]
+			in windows => Administrator
+			in unix    => root
+			userid of root is always 0
+			groupid of root is always 0
+4. /usr/sbin
+5. /usr			Unix System Resource
+
+		root is the single user of the system
+
+6. /etc		editable text configuration
+
+			configuration	
+			|
+		-------------------
+		|		|
+		wizard		text files
+		GUI
+
+7. /opt		= optional directory for third party software
+		same like c:\program files
+
+	/opt/jdk11/etc 
+	/opt/jdk11/bin <-- javac is stored here
+	/opt/adobe/bin/acrobat <-- the exe file 
+
+8. /dev		device driver files
+
+	a character device works as one character at a time
+		mouse, keyborad, console 
+					
+
+	a block device works a sector[collection of sectors as block]
+
+		512 bytes = 1 sector
+		2 sectors = 1 block = 1024 bytes
+	
+		1024 blocks = 1kb
+		1024 kb = 1mb
+		1024 mb = 1gb
+		
+
+9. /tmp
+		same in windows c:\Windows\temp
+
+		its a dumping ground for all the users
+
+		to pass files via it
+
+		if the server reboots the /temp is washed out
+
+
+10. /home	a major folder for all the users
+		to have their personlized homes
+
+			/
+			|
+		-----------------
+		|
+		home
+		|
+	-------------------
+	|		|
+	jack		jill
+	
+
+	/home/java	/home/jill
+	
+
+			/
+			|
+		--------------
+		|
+		0
+		|
+		local
+		|
+		robin
+		|
+		pizza
+		|
+		home
+		|
+	----------------
+	|
+	jack
+ 
+
+pwd = print working directory
+
+
+	cd /bin
+	pwd
+	/bin <-- is the current directory
+	
+	cd etc
+
+
+			paths in unix
+			|
+		--------------------------
+		|			|
+	relative path		absolute path
+	current folder		always begin with a / 
+
+	cd /usr				cd /usr
+	cd bin <-- bin inside /usr	cd etc <-- error since
+					etc not found in /usr
+
+					cd /etc <-- absolute path
+
+
+			/
+			|
+		--------------
+		|
+		0
+		|
+		local
+		|
+		robin
+		|
+		pizza
+		|
+		home
+		|
+	----------------
+	|
+	jack
+
+
+11. /var
+
+		variable data
+
+	/var/at
+	/var/cron
+	/var/www
+	/var/spool
+
+12. /lib
+		libraries
+
+13. /proc
+		processes as files stored here
+
+14. /	<-- / directory for the root user
+		its the home of the root user
+
+15. /root <--- some os has a dedicated root directort as a home		
+		for the root user
+
+		/
+		|
+	-------------
+	|
+	root <-- here the actual root user will store his/her files
+
+
+
+
+
+
+
+
+
+
+root === the root user
+root === for the / directory
+
+
+
+quantum world 
+|
+thoughtrons
+
+Think= thought = invisible = faster tha light
+
+
+
+think+think+think = emotions
+
+action
+
+result
+
+		  I		   II
+			   =
+
+		T	E	A	R
+		|	|	|	|
+
+
+
+
+File commands
+--------------------
+
+1. create file
+	cat > filename
+		data
+	^d
+2. view the file content
+	cat filename
+	cat -n filename [ with line numbers ]
+3. copy a file
+	cp sourcefile  newfile
+	cp sourcefile newlocation
+4. rename a file
+	mv oldfilename newfilename
+5. move a file
+	mv sourcefile newlocation
+6. remove a file
+	rm filename
+	rm -i filename [ interactive deletion ]
+	rm -f filename [ delete with force ]
+	rm -r directory [ destroy the complete directory ]
+	
+DIRECTORY COMMANDS
+
+			/
+			|
+			home
+			|
+			user
+			| <== ur here 
+			office
+			|
+		-----------------
+		|		|
+		mail		bank
+		|		|
+	-----------------	-------------
+	|		|	|	|
+	inbox	    outbox	icici	hdfc
+
+
+set -o noclobber [ will not allow the cat > filename to overrite
+			if the file already exists ]
+
+set +o noclobber [ restore back to cat > to overwrite ]
+
+set -o noclobber is specific to the session
+once you log out the effect is lost
+hence save this setting in the user profile script
+
+
+set -o to see the settings
+
+set -o noclobber [ to on it ]
+	now > can overrite
+
+set +o noclobber [ to off it ]
+	not  > cannot overwrite
+
+1. make a directory
+
+		mkdir directoryname
+
+2. change to the directory
+		cd directoryname
+
+3. exit one level up from the current dirctory
+
+	cd ..
+4. anytime switch to the home directory of the current user
+	cd Enterkey
+
+5. goto the root
+	cd /
+
+6. how to goto the users home folder
+	cd ENTERKEY
+	or
+	cd ~
+-------------------------------
+
+Hard Link
+
+
+	- to share a file across directories
+
+	- the link count is increased by one 
+
+	- changes made via one link can be reflected to the other
+
+	- on deleting a hard linked entry, it diminishes the 
+	link count by one
+
+	- it is like a nick name to the existing file
+
+	- it cannot span partition
+
+	- it cannot be created to a folder
+		cause folder contains subfolder/multiple files
+
+	- it is only within the partition for a file
+
+	myself
+	| rajesh.sharma
+	--------friends
+	|	  raja
+	--------family
+		|
+		--------parent
+		|	 raju
+		--------wife
+		|	raj
+		-------kids
+			daddy
+
+			/
+			|
+		------------------
+		|		|
+		root		home
+		|		|
+	  script.sh	----------------
+	rw- r-- r--	|		|
+			jack		jane
+			|		|
+			script.sh	script.sh
+			log10.txt
+		ln log10.txt log9.txt
+
+
+	ln /root/script.sh /home/jack/script.sh
+	ln /root/script.sh /home/jane/script.sh
+
+
+	find . -inum 409 <--- find all the files hardlinked as 409
+				inode number
+
+
+	find . -inum 409 -exec rm {} \;
+
+		-exec means execute the following command
+		ie rm to remove each entry found by the find
+
+----------------------------
+
+What is soft link
+	- similar to the shortcut in windows
+
+	ln -s sourcefilepath  softlinkfilename
+
+	ln -s office/bank/hdfc/carloan.txt  mycar
+			|			|
+		target file's path	  a soft link filename
+		inode is 120			190
+
+	it is alwayts a separate file
+	[ nothing to do with hard link ]
+
+	- it can be created to a file / directory path
+
+	- it can point to a file across partition
+
+	- use absolute path to file/directory for portable 
+		soft links
+
+		/
+		|
+	----------------
+	|		|
+	home		SharedFolder
+	|		|
+	birendra	BankProject
+	|			|
+	mylog			Data.log
+
+
+	ln -s /SharedFolder/BankProject/Data.log  mylog
+
+
+	ln -s First.java mybank
+
+	if mybank is a softlink pointing to a folder
+	then a soft link as 'First.java' is created
+	in the target folder of mybank
+	as First.java [ as a broken link ]
+
+	ln -s First.java sal.txt
+
+	if sal.txt already exists as a soft link, then
+	error msg is shown
+
+	
+
+
+
+
+on deletion of softlink, target file remains safe
+but if the target file is lost or rename or misplaced
+then softlink is broken
+
+
+
+---------------------
+
+		MyComputer
+		|
+	------------------
+	|		|	
+	C:		D:
+
+
+	/dev/sda0<-- full drive
+	/dev/sda1<-- C:
+	/dev/sda2<-- D:
+	/dev/hda <-- networked folder from samba server 
+
+	mount /dev/sda1 /root
+	mount /dev/sda2 /home
+	mount /dev/hda /home/birendra/project
+
+		/
+		|
+	---------------------------------------
+	|1		|2		|
+	root		home		opt
+			|
+		-----------------
+		|
+		birendra
+		|
+	---------------
+	|3
+	project
+
+
+
+cd /root
+cd /home
+
+man vs info	vs doc 
+info ls
+info coreutils
+info info
+
+---------------------------------------
+
+
+  uuu ggg ooo  username groupname
+  ||| ||| |||	 |       |
+- rw- r-- r--  1 rajesh  family  620 Sep 20  2022 wallet.txt
+|	       |		 |	 | 	  |
+type   link count		size  mtime	file/directory
+|
+- regular file [ text file ]
+d for directory
+c for character device
+b for block device
+s for socket
+l for soft link
+
+	unix has 3 types of users
+	unix has 3 types of permissions
+
+
+	user	-	owner of the file/directory
+
+	group	- 	logical set of trusted users
+
+	other	-	neither the onwer nor the group member
+
+			FILE			DIRCTORY
+	--------------------------------------------------------
+	read		cat			ls
+
+	--------------------------------------------------------
+	write		vi file			mkdir,cat>, mv
+			cat >> file		cp,rm,rmdir
+	--------------------------------------------------------
+	execute		run it as a		cd command to
+			script			enter into it
+	--------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
