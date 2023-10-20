@@ -1,4 +1,4 @@
-
+#./commLineTest.sh john johny janardan  seeta geeta rita amar akbar anthony VIRATKOHLY
 
 echo "The script is : $0"
 
