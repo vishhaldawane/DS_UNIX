@@ -1,3 +1,12 @@
+function errorMessage()
+{
+
+		echo "Error: $1"
+		echo "USAGE : $0 pattern filename"
+		echo "pattern - word to search"
+		echo "filename - the file in which word is search"
+}
+
 DATA_FILE_LOCATION=/Users/apple/DassaultUnix
 
 if [ $# -eq 0 ] # if the arguments not passed
@@ -22,15 +31,12 @@ then
 else
 	if [ $# -gt 2 ] # script jack emp.lst peter.lst
 	then
-		echo "Too many parameters..."
-		echo "USAGE : $0 pattern filename"
-		echo "pattern - word to search"
-		echo "filename - the file in which word is search"
+		errorMessage  "Too many paraters"
 		exit
 	else
 		if [ $# -eq 1 ]  #  script jack MISSINGFILE
 		then
-			echo "File name is missing"
+			errorMessage "Missing filename"
 			exit
 		else
 			if [ $# -eq 2 ] # script jack emp.lst
