@@ -1,4 +1,8 @@
 
+9820 44 34 64
+vishalviniing@gmail.com
+
+
 
 	Unix/Linux Fundamentals with Shell Scripting
 				- with Vishhal
@@ -699,6 +703,41 @@ positive feeling			negative feeling
 		+ has the potential of negativity
 		- sign doesnt have potentiality of +
 
+
+		applying permissions
+			|
+		-------------------		
+		|		|
+	character 		octal
+		|		|
+		read		4
+		write		2
+		execute		1
+		---		----
+		rwx		7
+
+	      ugo	
+	chmod 000 filename [ efficiency ]
+
+	chmod   0 filename
+	chmod  00 filename
+	chmod 000 fllename
+
+	chmod 7 file.txt
+	
+
+	chmod ugo+rwx file.txt
+	chmod u+r file.txt [ flexibility ]
+	chmod u+rw file.txt
+	chmod ug+r file.txt
+	chmod u+rwx,g-rwx,o+rwx file.txt
+
+	chmod a+rwx file.txt
+		all users 
+	
+
+	in[secured]
+
 ---------- read permission ---------
 1. cat > prince.txt
 	hello everyone
@@ -733,7 +772,596 @@ positive feeling			negative feeling
 4. ./demo.sh [ now the script is running ]
 
 
+chmod ugo+rwx file.txt
+chmod a+rwx file.txt [ grant full permission to all users ]
+-----------------------
 
+Directory permission
+
+--------read permission ----
+
+1. mkdir jupitor
+2. cd jupitor
+3. touch a b c 
+4. cd ..
+5. ls -l jupitor [ content of this directory are shown ]
+6. ls -ld jupitor [ now you can view the permission of it ]
+7. chmod u-r jupitor 
+8. ls -ld jupitor [ now you can view the permission of it ]
+9. ls -l jupitor [ permission denied to view the content 
+			of this directory  ]
+
+
+--------- write permission --------
+
+1. ls -ld jupitor [ view its permission ]
+2. chmod u-w jupitor [ now no cat>, rm, cp, mv allowd within it]
+			but cp would work if the destination has rights
+3. ls -ld jupitor
+4. cat > jupitor/d
+------------------------------------
+
+--------- execute permission ---------
+
+1. ls -ld jupitor
+2. chmod u-x jupitor
+3. cd jupitor [ permission denied to enter into the directory ] 
+4. ls -l jupitor
+	[ in ubuntu it shows the listing with partial details ]
+		all other details except filename are not shown
+		in mac os it doesnt show the details
+		
+5. chmod u+x jupitor
+6. ls -l jupitor [ contents are seen ]
+
+
+------------------
+
+
+
+
+
+
+
+
+
+		rm -r directory [ can destroy the directory
+				with all the subcontent ]
+
+		rm -ri directory [ interactive deletion ]
+
+		rm -rf directory [ force remove ]
+
+
+
+
+TUNE the default permissions
+------------------------------
+
+				FILE		DIRECTORY
+	BASE permissions	6   6   6	7   7   7
+	UMASK		      0	0   2   6     0 0   2   2 
+	--------------------------------------------------
+	default permissions   0 6   4   4     0 7   5   5		
+			        rw- r-- r--   0 rwx r-x r-x
+
+
+	set the umask to a value so that
+	minimum execute permission 
+	can be acquired for new coming files
+	
+				FILE		DIRECTORY
+bits of	BASE permissions	110 110 110	111 111 111
+bits of	UMASK		      0	101 101 101	101 101 101 
+	--------------------------------------------------
+	default permissions   0 		
+			        
+				FILE		DIRECTORY
+bits of	BASE permissions	110 110 110	111 111 111
+bits of	~UMASK		      0	111 010 010     010 010 010 
+	--------------------------------------------------
+&	default permissions   0 010 010 010     010 010 010
+
+it can be in the rotatin of 4 and 2 and never into 1
+		
+
+
+	4	100 read
+	2	010 write
+	1	001 execute
+------------------------------
+	7	111 rwx
+
+	4+2 [ 6 ] 
+	
+	100
+	010
+	---
+	110 <-- 6
+
+
+	4+1 [ 5 ]
+
+	100
+	001
+	---
+	101 <-- 5
+
+
+can we disable the executablenessof an executable file 
+in windows? NO
+
+---------------------
+
+The Vi editor
+-------------
+
+	vi = visual editor
+
+	1. at the $ prompt
+	2. vi first.sh
+	3. vi is in a default mode known as COMMAND MODE
+	
+
+
+	Esc ------>	command mode
+			|
+       [i]---------------------------[:]
+	|			      |	
+	insert mode  		last line mode / Ex mode
+
+
+
+
+A	how to create a new file
+
+	1. vi first.sh
+	2. press i [ to switch to insert mode ]
+	3. type desired data
+	4. press ESC [ back to command mode ]
+	5. press : [last line mode ]
+	6. wq to write and quit [ means :wq ]
+		write and quit vi 
+
+
+B.	how to open a file and discard changes if made
+
+	1. vi first.sh
+	2. press i
+	3. modify file
+	4. press ESC
+	5. press :q! [ to discard changes and quit vi ]
+		or
+	   press :wq [ changes are SAVED ]
+
+	
+Command mode commands
+----------------------
+w	to goto the next word
+e	to goto the next word [ halts at the end of each word]
+b	backword 
+^e	scroll down
+^y	scroll up
+
+^f	forward to next page
+^b	backward to prev page
+
+
+dw	delete the current word
+5dw	delete 5 words
+500dw	500 words to delete
+
+u	to undo last action
+3u 	undo last 3 actions
+
+dd	to delete current line
+50dd	delete 50 lines
+
+
+yw	copy a word in the memory
+3yw	copy 3 words
+
+p	to paste it from the memory
+50p	paste 50 times
+
+
+		cut		copy
+		|		|
+word	-->	dw		yw
+3words	-->	3dw		3yw
+line		dd		yy
+5lines		5dd		5yy
+
+		p to paste it
+
+Last line mode commands
+------------------------
+:set number		to enable the line numbers
+:set nonumber		to disable the line number
+:1
+:10
+:$
+
+:40,59y		copy ranged lines
+
+:3,14d		delete ranged lines
+
+
+-------------------------
+
+	Filters
+
+		- to acquire the desired data
+		from the given input
+
+the the the 
+
+Dassault Sytems 
+Dassault Sytems 
+public static void main
+
+
+~ symbol means /home/user <-- if ur user account is user
+
+
+	cd ~deepak <-- cd /home/deepak
+
+
+	cd ~ <-- going to the home directory of the current user
+
+
+	cd  ENTER also does the same
+
+	
+
+
+	vi ~/.vimrc		-- vi /home/user/.vimrc
+
+	
+FILTERS
+-------------
+
+
+	1. wc
+		word count
+
+			wc emp.lst
+			lines words characters of a given file
+
+			wc -l emp.lst
+
+			wc -w emp.lst
+
+			wc -c emp.lst
+
+
+			ls | wc
+
+			output of ls is converted as an input to
+			the next command beyond the PIPE
+
+			this is interprocess communication
+
+		
+	echo todays date is date
+	echo todays date is `date`
+
+	echo "look at the calendar `cal`"
+
+	echo -e "look at the calendar \n`cal`"
+
+
+	-e means enable escape sequenecs like \n \t etc
+
+	`` -- grave accent marks - backticks
+
+
+	anything surrounded by `` must be a command or a script
+
+	"" would preserve the spaces
+
+
+	'anything inside single quote is not processed'	
+
+	
+	A=100
+	echo value of A is $A
+
+	echo "value of A is    :    $A" <-- spaces are preserved
+
+	echo 'value of A is $A'   wont fetch value of A
+
+	echo 'look at the calendar `cal`' <-- cal wont run
+
+
+	"" = preserve space, fetch variables, run commands given inside ``
+	'' = string literal
+	`` = run commands /script within it
+
+
+
+
+
+
+				
+	2. head
+			fetch top 10 lines from a given input
+			head ls.txt
+			head server.logfile
+				[ shows first 10 lines from the above log file]
+
+			head -n 30 ls.txt
+			head -n 5 ls.txt
+			ls -ltr | head
+			ls -ltr | head -n 5
+
+			
+	3. tail
+			fetch bottom 10 lines from a given input
+
+			tail ls.txt
+			tail server.logfile
+				[ lastet bottom 10lines from a file]
+			tail -n 40 ls.txt
+			ls -ltr | tail -n 5
+
+			tail -f log.txt
+				will followup the file changes
+
+	4. cut
+		
+		to cut the data vertically based on default
+		delimiter as TAB key
+
+
+			cut -f 1 salary.txt
+			
+			-f means field number
+
+			cut -f 1,2,3 salary.txt
+
+			cut -f 1,3,5,7,8 salary.txt
+
+			cut -f 1-3,5,7- salary.txt
+
+
+				1-3 means 1 to 3 all columns
+
+				7- means 7 to the last unknown column number
+
+			u cannot shuffle the column view
+
+				
+			cut -d "|" -f1 emp.lst
+
+			-d means to specify custom delimiter
+
+		
+
+	Unix concepts and applications - Sumithabha Das
+		
+
+	Bash Shell Scripting Guide - ultimate book 
+
+	bash guide pdf
+
+	
+
+	5. tr
+		translate characters
+
+	6. grep
+		global regular expression print
+
+		
+	7. egrep
+			multi pattern seaerch
+
+	8. fgrep
+
+
+
+	$? holds the exit status of the recently issued command
+
+
+	
+	9. awk
+
+	10. sed
+
+
+
+
+command line arguments
+-------------------------
+
+passing parameters to the script at runtime
+
+		$# -- count parameters
+
+		$* is the vector - all parameters
+
+		$1 is the first parameters
+		and so on till $9
+
+		$0 is the script name itself
+
+
+
+purpose of scripting
+
+
+	PRogramming
+	language		vs		scripting
+
+1	java dotnet cpp c			unix shell scripting
+						sql scripting
+						perl scripting
+
+2.	data types are here			no data types here
+		int char float double		x
+
+
+3.	data qualifiers				X
+		static final
+		const 
+				
+4	data modifiers
+		public private protected	X
+
+5. 	rich operators				+ - * / %
+	45 symbols in C
+
+6.	huge function libraries			huge filters
+						(written in C)
+
+7. 	complex match possible			x
+
+8.	GUI					x
+
+9.	stack quest linked list			X
+	trees : DS
+
+10 	mission critical application		handle and automate
+	development				all these
+						things
+
+				contol the developed applications
+						
+Script has 3 main purposes
+--------------
+1. Automation
+2. Automation
+3. Automation
+
+
+java programmings langauge		vs	java scripting
+|						[ IE chrome
+|
+project						on browser ]
+
+C
+|
+wc.c
+ls.c
+grep.c
+cut.c
+
+	
+
+
+
+
+
+automate.sh
+-------------
+asdf
+sadf
+sdaf
+asdf
+fasd
+java Server
+sqlplus username password << EOF
+	insert quer
+	update
+	deelte
+EOF
+
+python ....... ....
+asdf
+saf
+sadf
+
+gcc sdfsdaf
+g++ sadfdsaf
+./sakdflsdafj
+
+
+
+
+set | more
+
+	to see the environemnt
+
+
+echo $HOME
+
+echo $LANG
+echo $MAIL
+echo $SHELL
+echo $PATH
+echo $PS1
+
+\h hostname
+\W working directory
+\u username
+\d date
+\t time
+
+\s shell
+\v shell verison
+
+
+
+		env		vs		set
+		|				|
+		global				local
+		|				|
+	exported variables			local settings of 
+	are available				the current shell
+	througout the level			
+	of shells
+
+
+ps = process status
+
+		bash-3.2$ ps
+  PID TTY           TIME CMD
+  539 ttys000    0:01.88 -bash <--- login shell
+ 8598 ttys000    0:00.17 vi Day1.txt
+  547 ttys001    0:01.56 -bash <--- login shell
+ 8726 ttys001    0:00.01 bash <- the child shell 
+
+
+PS1='mi '
+
+
+
+	top = see dynamic processees
+
+	ps -ef  <--- to see all the system+ user processes
+
+
+
+
+	ps -ef | grep vi
+	ps -ef | grep cat
+
+
+	kill -2 PID		interrupt signal
+	kill -15 PID		termination
+
+	kill -9 PID		force kill
+
+	vi -r peter.txt  <-- to recover the file from a crashed vi session
+
+
+
+
+	alias
+
+	alias c=clear
+
+	alias ll='ls -l'
+
+	alias l.='ls -d .*'
+
+	unalias ll
+
+	aliases are specific to the session
+	once logged out, they are gone
+
+	
 
 
 
