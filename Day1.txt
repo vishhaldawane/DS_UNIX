@@ -647,6 +647,8 @@ info info
 
 ---------------------------------------
 
+File permissions : basic model
+
 
   uuu ggg ooo  username groupname
   ||| ||| |||	 |       |
@@ -671,7 +673,7 @@ l for soft link
 
 	other	-	neither the onwer nor the group member
 
-			FILE			DIRCTORY
+			FILE			DIRECTORY
 	--------------------------------------------------------
 	read		cat			ls
 
@@ -683,8 +685,52 @@ l for soft link
 			script			enter into it
 	--------------------------------------------------------
 
+The ocean/sea is vast
+my boat is frail
+Thou Art is with me
+and everything well
+
+			possibility of thoughts
+positive thoughts			negative thoughts
+positive feeling			negative feeling
+			possibility of feelings
 
 
+		+ has the potential of negativity
+		- sign doesnt have potentiality of +
+
+---------- read permission ---------
+1. cat > prince.txt
+	hello everyone
+	how are you
+    ^d to save it
+2. ls -l prince.txt
+3. cat prince.xt
+4. chmod u-r prince.txt
+5. ls -l prince.txt
+6. cat prince.txt [ will give permission denied error msg ]
+7. chmod u+r prince.txt
+8. cat prince.txt [ will work ]
+----------- write permission ------------
+1. chmod u-w prince.txt
+2. ls -l prince.txt [ view the permission for the user ]
+3. cat >> prince.txt [ will give permission denied error msg ]
+4. chmod u+w prince.txt, 
+5. ls -l prince.txt <--to view permission
+6. cat >> prince.txt 
+	new line here
+   ^d <-- file is updated now
+7. cat prince.txt		
+----------- execute permission -----------
+1. cat > demo.sh
+	cal
+	date
+	echo how are you
+2. ./demo.sh [ will give permission denied error msg ]
+3. ls -l demo.sh [ view the permission for the user ]
+4. chmod u+x demo.sh 
+5. ls -l demo.sh [ view it again ]
+4. ./demo.sh [ now the script is running ]
 
 
 
