@@ -1361,7 +1361,12 @@ PS1='mi '
 	aliases are specific to the session
 	once logged out, they are gone
 
-	
+
+awk 'if ($4>90) {print $2,$1,$4}' data.lst
+
+
+
+
 
 
 
